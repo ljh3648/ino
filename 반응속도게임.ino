@@ -43,7 +43,6 @@ void setup() {
 }
 
 void loop() {
-    int r = 0; // 랜덤 배정 확인
     bool game_ruling = true; //게임 승패 확인 승리 true, 패배 false
 
     GAME_SOUND(1, 0); // 게임시작 소리
