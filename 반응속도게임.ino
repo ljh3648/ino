@@ -16,7 +16,7 @@ int led_D[3] = { 8,9,10 };
 int sw_D[3] = { 5,6,7 };
 
 // 피에조 디지털핀 지정
-#define BUZ 4
+#define BUZ 3
 
 // 게임 소리
 int game_start[] = { C,D,E,F,G,F,E,D,C }; // 게임 시작 시 소리
@@ -28,8 +28,7 @@ int game_clear[] = { G, G, A, A, G, G, E, G, G, E, E, D, G, G, A, A, G, G, E, G,
 int level_DFCLT[10] = { 2000,1500,1000,800,700,600,500,400,300,150};
 
 void setup() {
-    digitalWrite(12,HIGH);
-    Serial.begin(9600);
+    digitalWrite(12,HIGH); // 리셋단추 활성화
     
     for (int i = 0; i < 3; i++) {
         pinMode(led_D[i], OUTPUT);
@@ -48,7 +47,6 @@ void loop() {
     GAME_SOUND(1, 0); // 게임시작 소리
     LED_ON_ALL();     // LED 3초간 점등후 소등
     
-
     for (int level=1; level<=10; level++) { //i는 난이도 1단계부터 10단계 까지.
         GAMELOOP(level);
     }
@@ -74,15 +72,14 @@ void GAMELOOP(int level) {
 }
 
 // 게임 승패판정
-bool GAME_READING(int r, int g_time) {
+bool GAME_READING(int r, int g_time) { //g_time은 게임 난이도에 따른 시간이 저장이 됨.
     bool game_ruling = false;
     unsigned int time_previous = millis();
     unsigned int time_current = millis();
-    while (time_current - time_previous <= g_time) {
+    while (time_current - time_previous <= g_time) { // 0 ~ g_time초 까지만 실행이 됨
         if (digitalRead(sw_D[r]) == LOW) { //LED 켜진 위치와 눌린 스위치가 같다면
             return game_ruling = true; // 성공
         }
-
         time_current = millis();
     }
 
