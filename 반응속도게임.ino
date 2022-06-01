@@ -47,7 +47,7 @@ void loop() {
     GAME_SOUND(1, 0); // 게임시작 소리
     LED_ON_ALL();     // LED 3초간 점등후 소등
     
-    for (int level=1; level<=10; level++) { //i는 난이도 1단계부터 10단계 까지.
+    for (int level=1; level<=10; level++) { //난이도 1단계부터 10단계 까지.
         GAMELOOP(level);
     }
     
