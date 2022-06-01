@@ -91,25 +91,6 @@ int GAME_Q_RAND(void){ // 게임 문제 랜덤 생성
   return r;
 }
 
-// LED 제어 함수
-void LED_ON_R(int r) { // 랜덤배정 받은 LED를 켜는곳
-    digitalWrite(led_D[r], HIGH);
-}
-
-void LED_ON_ALL() { // LED 3초간 점등후 소등
-    for (int i = 0; i < 3; i++) {
-        digitalWrite(led_D[i], HIGH);
-    }
-    delay(3000);
-    LED_OFF_ALL();
-}
-
-void LED_OFF_ALL() {
-    for (int i = 0; i < 3; i++) {
-        digitalWrite(led_D[i], LOW);
-    }
-}
-
 // 게임의 사운드 관리 함수
 // song은 음악 트랙 선택, cnt는 게임 단계에 맞는 소리의 갯수를 가져옴.
 void GAME_SOUND(int song, int cnt) {
@@ -144,4 +125,23 @@ void GAME_SOUND(int song, int cnt) {
 // 게임 리셋 초기화
 void GAMEOVER() {
     digitalWrite(12, LOW);
+}
+
+// LED 제어 함수
+void LED_ON_R(int r) { // 랜덤배정 받은 LED를 켜는곳
+    digitalWrite(led_D[r], HIGH);
+}
+
+void LED_ON_ALL() { // LED 3초간 점등후 소등
+    for (int i = 0; i < 3; i++) {
+        digitalWrite(led_D[i], HIGH);
+    }
+    delay(3000);
+    LED_OFF_ALL();
+}
+
+void LED_OFF_ALL() {
+    for (int i = 0; i < 3; i++) {
+        digitalWrite(led_D[i], LOW);
+    }
 }
