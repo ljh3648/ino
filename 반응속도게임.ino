@@ -117,9 +117,9 @@ void GAME_SOUND(int song, int cnt) {
             delay(300);
         }
         break;
-    }
     default: 
         break;
+        }
 }
 
 // 게임 리셋 초기화
